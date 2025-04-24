@@ -22,4 +22,4 @@ if ! python -m spacy validate; then
 fi
 
 # Run the Flask app
-python chatbot.py --port=5000
+# python chatbot.py --port=5000
