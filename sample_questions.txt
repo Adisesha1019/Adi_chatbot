@@ -1,0 +1,49 @@
+Q: What is the capital of France?
+A: The capital of France is Paris.
+
+Q: Who wrote "To Kill a Mockingbird"?
+A: "To Kill a Mockingbird" was written by Harper Lee.
+
+Q: What is the largest planet in our solar system?
+A: The largest planet in our solar system is Jupiter.
+
+Q: What is the chemical symbol for water?
+A: The chemical symbol for water is H2O.
+
+Q: Who painted the Mona Lisa?
+A: The Mona Lisa was painted by Leonardo da Vinci.
+
+Q: What is the tallest mountain in the world?
+A: The tallest mountain in the world is Mount Everest.
+
+Q: What is the speed of light?
+A: The speed of light is approximately 299,792 kilometers per second (km/s).
+
+Q: Who is the founder of Microsoft?
+A: The founder of Microsoft is Bill Gates.
+
+Q: What is the square root of 64?
+A: The square root of 64 is 8.
+
+Q: What is the longest river in the world?
+A: The longest river in the world is the Nile River.
+
+Q: What is the currency of Japan?
+A: The currency of Japan is the Japanese Yen.
+
+Q: Who is known as the "Father of Computers"?
+A: Charles Babbage is known as the "Father of Computers".
+
+Q: What is the hardest natural substance on Earth?
+A: The hardest natural substance on Earth is diamond.
+
+Q: What is the primary language spoken in Brazil?
+A: The primary language spoken in Brazil is Portuguese.
+
+Q: Who invented the telephone?
+A: The telephone was invented by Alexander Graham Bell.
+
+Q: which applications will support AP9641?
+A: All single phase(SU, SUCAN, SY) applications.
+
+Q:
