@@ -1,0 +1,94 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        #chat-container { max-width: 600px; width: 100%; border: 1px solid #ccc; border-radius: 8px; background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+        #chat { padding: 10px; height: 400px; overflow-y: auto; border-bottom: 1px solid #ccc; }
+        .message { margin-bottom: 10px; padding: 8px 10px; border-radius: 8px; max-width: 80%; }
+        .user { background-color: #d1e7ff; align-self: flex-end; }
+        .bot { background-color: #e2ffe2; align-self: flex-start; }
+        #input-container { display: flex; padding: 10px; }
+        #user-input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 8px; margin-right: 10px; }
+        button { padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <h2 style="text-align: center; padding: 10px;">Chatbot</h2>
+        <div id="chat"></div>
+        <div id="input-container">
+            <input type="text" id="user-input" placeholder="Type a message..." onkeypress="handleKeyPress(event)" />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+        <div id="input-container">
+            <input type="file" id="file-input" />
+            <button onclick="uploadFile()">Upload</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            if (!userInput) return;
+
+            const chat = document.getElementById('chat');
+            const userMessage = document.createElement('div');
+            userMessage.classList.add('message', 'user');
+            userMessage.textContent = 'You: ' + userInput;
+            chat.appendChild(userMessage);
+
+            fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const botMessage = document.createElement('div');
+                botMessage.classList.add('message', 'bot');
+                botMessage.textContent = 'Chatbot: ' + data.response;
+                chat.appendChild(botMessage);
+                chat.scrollTop = chat.scrollHeight; // Scroll to the bottom
+            });
+
+            document.getElementById('user-input').value = '';
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function uploadFile() {
+            const fileInput = document.getElementById('file-input');
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const chat = document.getElementById('chat');
+                const botMessage = document.createElement('div');
+                botMessage.classList.add('message', 'bot');
+                botMessage.textContent = 'Chatbot: ' + data.response;
+                chat.appendChild(botMessage);
+                chat.scrollTop = chat.scrollHeight; // Scroll to the bottom
+            });
+        }
+    </script>
+</body>
+</html>
